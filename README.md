@@ -22,7 +22,7 @@ To use the Gripper class, first create a Gripper object with the IP adress of th
 
 ```python
 from gripper import Gripper
-gripper = Gripper('172.31.1.51')
+gripper = Gripper('172.31.1.51') # Replace with YOUR IP adress
 ```
 
 This will initiate a Modbus TCP client that allows to read or write registers from the TURCK Master Module.
