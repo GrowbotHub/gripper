@@ -12,7 +12,7 @@ class Gripper:
                          See README.md file for informations about how to find the IP adress.
 
         """
-        if not isinstance(force, str):
+        if not isinstance(ip_adress, str):
             raise Exception('ip_adress requires a string, the variable you entered is of type {}'.format(type(target_position)))
 
         self.POSITION_MAX = 40.683074951171875 # Maximum position amplitude of the finger in mm
@@ -201,7 +201,7 @@ class Gripper:
         none
 
         """
-        if self.get_status() == STATUS_ERROR:
+        if self.get_status() == self.STATUS_ERROR:
             self.acknowledge()
         self.client.write_register(0x0801, 0x0000)
 
@@ -309,10 +309,10 @@ class Gripper:
         """
 
         self.get_status()
-        if self.status == STATUS_ERROR:
+        if self.status == self.STATUS_ERROR:
             self.acknowledge()
             time.sleep(0.1)
-        elif self.status == STATUS_OOS:
+        elif self.status == self.STATUS_OOS:
             self.timeout(1)
             time.sleep(0.1)
             self.timeout(0)
